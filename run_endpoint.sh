@@ -17,4 +17,28 @@
     
 /wait-for-it.sh sim:57832 -s -t 10
 
+if [ -n "$TESTCASE" ]; then
+    # interop runner compliance
+    case "$TESTCASE" in
+        "chacha20")
+            ;;
+        "handshake")
+            ;;
+        "http3")
+            ;;
+        "multiconnect")
+            ;;
+        "resumption")
+            ;;
+        "retry")
+            ;;
+        "transfer")
+            ;;
+        "zerortt")
+            ;;
+        *)
+            exit 127
+            ;;
+    esac
+fi
 python3 /scapy-quic/init-flood.py -t 193.167.100.100 -net 193.167.0.0/24  2>> /logs/stderr.log
