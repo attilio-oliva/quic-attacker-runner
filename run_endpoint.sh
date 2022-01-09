@@ -41,4 +41,10 @@ if [ -n "$TESTCASE" ]; then
             ;;
     esac
 fi
-python3 /scapy-quic/init-flood.py -t 193.167.100.100 -net 193.167.0.0/24  2>> /logs/stderr.log
+if [ -n "$ATTACK" ]; then
+    case "$ATTACK" in
+        "init-flood")
+            python3 /scapy-quic/init-flood.py -t 193.167.100.100 -net 193.167.0.0/24  2>> /logs/stderr.log
+    esac
+fi
+
